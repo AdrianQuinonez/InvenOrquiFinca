@@ -12,7 +12,8 @@ class FincaController extends Controller
      */
     public function index()
     {
-        return view('fincas.index');
+        $fincas = Finca::orderBy('id', 'desc')->get();
+        return view('fincas.index', compact('fincas'));
     }
 
     /**
@@ -34,7 +35,7 @@ class FincaController extends Controller
         $finca->compra = $request->donde_compra;
         $finca->telefono = $request->telefono;
         $finca->save();
-        return redirect()->route('fincas.index');
+        return redirect()->route('fincas.index')->with('info', 'Finca creada con éxito');
     }
 
     /**

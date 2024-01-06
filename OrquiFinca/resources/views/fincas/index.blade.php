@@ -18,7 +18,31 @@
                         <a href="{{ route('fincas.create') }}" class="btn btn-success btn-sm float-end">Nueva finca</a>
                     </div>
                     <div class="card-body">
-                        ....
+                        @if (session('info'))
+                        <div class="alert alert-success">
+                            {{ session('info') }}
+                        </div>
+                        @endif
+                        <table class="table table-hover table-sm">
+                            <thead>
+                                <th> Nombre </th>
+                                <th> Propietario </th>
+                                <th> Donde compra </th>
+                                <th> Telefono </th>
+                            </thead>
+                            <tbody>
+                                @foreach ($fincas as $finca)
+                                <tr>
+                                    <td> {{$finca->nombre}} </td>
+                                    <td> {{$finca->propietario}} </td>
+                                    <td> {{$finca->compra}} </td>
+                                    <td> {{$finca->telefono}} </td>
+                                </tr>
+                                <tr>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
