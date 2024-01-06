@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FincaController;
+use App\Http\Controllers\ReporteController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,16 @@ Route::middleware('auth')->group(function () {
         Route::put('/{id}', 'update')->name('update');
         Route::get('/show', 'show')->name('show');
         Route::post('/report', 'viewReport')->name('viewReport');
+    });
+
+    Route::prefix('reportes')->controller(ReporteController::class)->name('reportes.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/', 'store')->name('store');
+        Route::delete('/{id}', 'destroy')->name('destroy');
+        Route::get('/{id}/edit', 'edit')->name('edit');
+        Route::put('/{id}', 'update')->name('update');
+        Route::get('/show', 'show')->name('show');
     });
 });
 

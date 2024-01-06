@@ -10,27 +10,27 @@
                             <a class="navbar-brand">Ver Reporte</a>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                 <a href="{{ route('fincas.create') }}" class="btn btn-success btn-sm">Nueva finca</a>
-                                <a href="{{ route('fincas.create') }}" class="btn btn-primary btn-sm">Nuevo reporte</a>
+                                <a href="{{ route('reportes.create') }}" class="btn btn-primary btn-sm">Nuevo reporte</a>
                             </div>
                         </div>
                     </nav>
                 </div>
                 <div class="card-body">
                     @include('fincas.datosF')
-                    <div class="row g-4">
-                        <div class="mb-3">
+                    <div class="row g-4 my-2">
+                        <div class="col-md-2">
                             <label for="nombre" class="form-label">Nombre de la finca</label>
                             <input type="text" class="form-control" name="nombre" id="nombre" disabled value="{{ $finca?->nombre }}">
                         </div>
-                        <div class="mb-3">
+                        <div class="col-md-2">
                             <label for="nombre" class="form-label">Propietario</label>
                             <input type="text" class="form-control" name="nombre" id="nombre" disabled value="{{ $finca?->propietario }}">
                         </div>
-                        <div class="mb-3">
+                        <div class="col-md-2">
                             <label for="nombre" class="form-label">Donde compra</label>
                             <input type="text" class="form-control" name="nombre" id="nombre" disabled value="{{ $finca?->compra }}">
                         </div>
-                        <div class="mb-3">
+                        <div class="col-md-2">
                             <label for="nombre" class="form-label">Telefono</label>
                             <input type="text" class="form-control" name="nombre" id="nombre" disabled value="{{ $finca?->telefono }}">
                         </div>

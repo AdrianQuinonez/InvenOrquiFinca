@@ -53,7 +53,6 @@ class FincaController extends Controller
         $year = $request->ano;
         if ($year == 'Selecciona un año') {
             $year = date('Y');
-            echo $year;
         }
         $finca = Finca::find($request->finca);
         $fincas = Finca::orderBy('id', 'desc')->get();
