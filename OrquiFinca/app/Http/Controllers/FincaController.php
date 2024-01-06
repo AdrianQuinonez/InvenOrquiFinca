@@ -67,7 +67,7 @@ class FincaController extends Controller
      */
     public function destroy(string $id)
     {
-        $finca = Finca::find($id);
+        $finca = Finca::findOrFail($id);
         $finca->delete();
         return redirect()->route('fincas.index')->with('info', 'Finca eliminada con éxito');
     }
