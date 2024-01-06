@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container"><br>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -29,6 +29,7 @@
                                 <th> Propietario </th>
                                 <th> Donde compra </th>
                                 <th> Telefono </th>
+                                <th>Acción</th>
                             </thead>
                             <tbody>
                                 @foreach ($fincas as $finca)
@@ -37,8 +38,11 @@
                                     <td> {{$finca->propietario}} </td>
                                     <td> {{$finca->compra}} </td>
                                     <td> {{$finca->telefono}} </td>
-                                </tr>
-                                <tr>
+                                    <td> <a href="javascript: document.getElementById('delete-{{$finca->id}}').submit()" class="btn btn-danger btn-sm">Eliminar</a></td>
+                                    <form id="delete-{{$finca->id}}" action="{{ route('fincas.destroy', $finca->id) }}" method="post">
+                                        @method('delete')
+                                        @csrf
+                                    </form>
                                 </tr>
                                 @endforeach
                             </tbody>

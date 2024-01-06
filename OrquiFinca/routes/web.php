@@ -19,3 +19,5 @@ Route::get('fincas', [FincaController::class, 'index'])->name('fincas.index');
 Route::get('fincas/create', [FincaController::class, 'create'])->name('fincas.create');
 
 Route::post('fincas',[FincaController::class, 'store'])->name('fincas.store');
+
+Route::delete('fincas/{id}', [FincaController::class, 'destroy'])->name('fincas.destroy');

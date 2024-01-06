@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container"><br>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -35,7 +35,7 @@
                                 <label for="">Telefono</label>
                                 <input type="number" class="form-control" name="telefono" id="telefono">
                             </div>
-
+                            <br>
                             <button type="submit" class="btn btn-primary">Guardar finca</button>
                             <a href="{{ route('fincas.index') }}" class="btn btn-danger">Cancelar</a>
                         </form>
