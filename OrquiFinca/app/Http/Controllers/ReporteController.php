@@ -45,6 +45,7 @@ class ReporteController extends Controller
         $reporte = new Reporte();
         $reporte->finca_id = $request->nombreF;
         $reporte->mes_id = $request->mes;
+        $reporte->year = $request->year == null ? date('Y') : $request->year;
         $reporte->higiene = $request->higiene == 1 ? 'x' : '';
         $reporte->dyv = $request->dyv == 1 ? 'x' : '';
         $reporte->vacunaA = $request->vacunaA == 1 ? 'x' : '';
@@ -64,8 +65,8 @@ class ReporteController extends Controller
         $reporte->prevencion = $request->prevencion;
         $reporte->tratamiento = $request->tratamiento;
         $reporte->via = $request->via;
-        if($reporte->save()){
-            return redirect()->route('reportes.create')->with('success', 'Reporte creado con éxito');
+        if ($reporte->save()) {
+            return redirect()->route('fincas.show')->with('success', 'Reporte creado con éxito');
         }
     }
 

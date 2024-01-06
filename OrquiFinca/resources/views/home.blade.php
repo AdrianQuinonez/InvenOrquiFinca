@@ -16,6 +16,15 @@
                     </nav>
                 </div>
                 <div class="card-body">
+                    @if (session('info'))
+                    <div class="alert alert-danger">
+                        {{ session('info') }}
+                    </div>
+                    @elseif(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                    @endif
                     @include('fincas.datosF')
                     <div class="row g-4 my-2">
                         <div class="col-md-2">

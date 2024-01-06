@@ -8,15 +8,6 @@
                     Crear reporte
                 </div>
                 <div class="card-body">
-                    @if (session('info'))
-                    <div class="alert alert-danger">
-                        {{ session('info') }}
-                    </div>
-                    @elseif(session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                    @endif
                     <form action="{{ route('reportes.store') }}" method="POST">
                         @csrf
                         <div class="row g-4">
