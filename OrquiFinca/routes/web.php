@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FincaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('fincas', function () {
-    return view('fincas.index');
-})->name('fincas.index');
+Route::get('fincas', [FincaController::class, 'index'])->name('fincas.index');
 
-Route::get('fincas/create', function () {
-    return view('fincas.create');
-})->name('fincas.create');
+Route::get('fincas/create', [FincaController::class, 'create'])->name('fincas.create');
+
+Route::post('fincas',[FincaController::class, 'store'])->name('fincas.store');
+
+Route::delete('fincas/{id}', [FincaController::class, 'destroy'])->name('fincas.destroy');

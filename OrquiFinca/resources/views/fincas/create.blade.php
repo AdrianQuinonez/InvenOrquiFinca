@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container"><br>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -17,7 +17,8 @@
                         Crear finca
                     </div>
                     <div class="card-body">
-                        <form action="">
+                        <form action="{{ route('fincas.store') }}" method="POST">
+                            @csrf
                             <div class="form-group">
                                 <label for="">Nombre de la finca</label>
                                 <input type="text" class="form-control" name="nombre" id="nombre">
@@ -34,7 +35,7 @@
                                 <label for="">Telefono</label>
                                 <input type="number" class="form-control" name="telefono" id="telefono">
                             </div>
-
+                            <br>
                             <button type="submit" class="btn btn-primary">Guardar finca</button>
                             <a href="{{ route('fincas.index') }}" class="btn btn-danger">Cancelar</a>
                         </form>
