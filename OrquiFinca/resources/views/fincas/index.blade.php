@@ -5,8 +5,15 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Listado de fincas
-                    <a href="{{ route('fincas.create') }}" class="btn btn-success btn-sm float-end">Nueva finca</a>
+                    <nav class="navbar navbar-light bg-light">
+                        <div class="container-fluid">
+                            <a class="navbar-brand">Listado de fincas</a>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a href="{{ route('fincas.create') }}" class="btn btn-success btn-sm float-end">Nueva finca</a>
+                                <a href="{{ route('fincas.show') }}" class="btn btn-primary btn-sm float-end">Ver reporte</a>
+                            </div>
+                        </div>
+                    </nav>
                 </div>
                 <div class="card-body">
                     @if (session('info'))

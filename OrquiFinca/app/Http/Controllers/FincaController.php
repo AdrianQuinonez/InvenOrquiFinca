@@ -41,9 +41,18 @@ class FincaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        $fincas = Finca::orderBy('id', 'desc')->get();
+        $finca=null;
+        return view('home', compact('fincas', 'finca'));
+    }
+
+    public function viewReport(Request $request)
+    {
+        $finca = Finca::find($request->finca);
+        $fincas = Finca::orderBy('id', 'desc')->get();
+        return view('home', compact('fincas', 'finca'));
     }
 
     /**
