@@ -51,7 +51,8 @@ class FincaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $finca = Finca::findOrFail($id);
+        return view('fincas.edit', compact('finca'));
     }
 
     /**
@@ -59,7 +60,13 @@ class FincaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $finca = Finca::findOrFail($id);
+        $finca->nombre = $request->nombre;
+        $finca->propietario = $request->propietario;
+        $finca->compra = $request->compra;
+        $finca->telefono = $request->telefono;
+        $finca->save();
+        return redirect()->route('fincas.index')->with('info', 'Finca actualizada con éxito');
     }
 
     /**
