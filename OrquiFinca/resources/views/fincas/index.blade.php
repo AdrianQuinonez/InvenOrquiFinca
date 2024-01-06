@@ -25,9 +25,9 @@
                         <tbody>
                             @foreach ($fincas as $finca)
                             <tr>
-                                <td> {{$finca->nombre}} </td>
-                                <td> {{$finca->propietario}} </td>
-                                <td> {{$finca->compra}} </td>
+                                <td class="align-baseline"> {{$finca->nombre}} </td>
+                                <td class="align-middle"> {{$finca->propietario}} </td>
+                                <td class="align-bottom"> {{$finca->compra}} </td>
                                 <td> {{$finca->telefono}} </td>
                                 <td>
                                     <a href="{{route('fincas.edit', $finca->id)}}" class="btn btn-warning btn-sm">Editar</a>
