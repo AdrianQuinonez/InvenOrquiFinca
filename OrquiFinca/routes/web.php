@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{id}', 'destroy')->name('destroy');
         Route::get('/{id}/edit', 'edit')->name('edit');
         Route::put('/{id}', 'update')->name('update');
+        Route::get('/show', 'show')->name('show');
+        Route::post('/report', 'viewReport')->name('viewReport');
     });
 });
 
