@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('fincas', function () {
+    return view('fincas.index');
+})->name('fincas.index');
+
+Route::get('fincas/create', function () {
+    return view('fincas.create');
+})->name('fincas.create');
