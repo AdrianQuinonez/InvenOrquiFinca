@@ -44,12 +44,17 @@ class FincaController extends Controller
     public function show()
     {
         $fincas = Finca::orderBy('id', 'desc')->get();
-        $finca=null;
+        $finca = null;
         return view('home', compact('fincas', 'finca'));
     }
 
     public function viewReport(Request $request)
     {
+        $year = $request->ano;
+        if ($year == 'Selecciona un año') {
+            $year = date('Y');
+            echo $year;
+        }
         $finca = Finca::find($request->finca);
         $fincas = Finca::orderBy('id', 'desc')->get();
         return view('home', compact('fincas', 'finca'));
