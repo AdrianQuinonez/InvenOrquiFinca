@@ -17,7 +17,8 @@
                         Crear finca
                     </div>
                     <div class="card-body">
-                        <form action="">
+                        <form action="{{ route('fincas.store') }}" method="POST">
+                            @csrf
                             <div class="form-group">
                                 <label for="">Nombre de la finca</label>
                                 <input type="text" class="form-control" name="nombre" id="nombre">
