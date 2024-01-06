@@ -38,7 +38,10 @@
                                     <td> {{$finca->propietario}} </td>
                                     <td> {{$finca->compra}} </td>
                                     <td> {{$finca->telefono}} </td>
-                                    <td> <a href="javascript: document.getElementById('delete-{{$finca->id}}').submit()" class="btn btn-danger btn-sm">Eliminar</a></td>
+                                    <td>
+                                        <a href="{{route('fincas.edit', $finca->id)}}" class="btn btn-warning btn-sm">Editar</a>
+                                        <a href="javascript: document.getElementById('delete-{{$finca->id}}').submit()" class="btn btn-danger btn-sm">Eliminar</a>
+                                    </td>
                                     <form id="delete-{{$finca->id}}" action="{{ route('fincas.destroy', $finca->id) }}" method="post">
                                         @method('delete')
                                         @csrf
