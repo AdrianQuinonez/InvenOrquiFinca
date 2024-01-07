@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
+ * @property int $finca_id
+ * @property int $mes_id
+ * @property int $year
  * @property string $higiene
  * @property string $dyv
  * @property string $vacunaA
@@ -29,4 +32,14 @@ use Illuminate\Database\Eloquent\Model;
 class Reporte extends Model
 {
     use HasFactory;
+
+    public function finca()
+    {
+        return $this->belongsTo(Finca::class, 'finca_id');
+    }
+
+    public function mes()
+    {
+        return $this->belongsTo(Mes::class, 'mes_id');
+    }
 }

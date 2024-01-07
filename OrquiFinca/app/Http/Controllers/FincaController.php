@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Finca;
+use App\Models\Reporte;
 use Illuminate\Http\Request;
 
 class FincaController extends Controller
@@ -45,7 +46,8 @@ class FincaController extends Controller
     {
         $fincas = Finca::orderBy('id', 'desc')->get();
         $finca = null;
-        return view('home', compact('fincas', 'finca'));
+        $reporte = [];
+        return view('home', compact('fincas', 'finca', 'reporte'));
     }
 
     public function viewReport(Request $request)
@@ -56,7 +58,11 @@ class FincaController extends Controller
         }
         $finca = Finca::find($request->finca);
         $fincas = Finca::orderBy('id', 'desc')->get();
-        return view('home', compact('fincas', 'finca'));
+        $reporte = Reporte::where([
+            ['finca_id', '=', $request->finca],
+            ['year', '=', $year],
+        ])->orderBy('mes_id', 'asc')->get();
+        return view('home', compact('fincas', 'finca', 'reporte'));
     }
 
     /**
