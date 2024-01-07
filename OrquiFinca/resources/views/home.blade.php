@@ -10,33 +10,38 @@
                             <a class="navbar-brand">Ver Reporte</a>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                 <a href="{{ route('fincas.create') }}" class="btn btn-success btn-sm">Nueva finca</a>
-                                <a href="{{ route('fincas.create') }}" class="btn btn-primary btn-sm">Nuevo reporte</a>
+                                <a href="{{ route('reportes.create') }}" class="btn btn-primary btn-sm">Nuevo reporte</a>
                             </div>
                         </div>
                     </nav>
                 </div>
                 <div class="card-body">
+                    @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                    @endif
                     @include('fincas.datosF')
-                    <div class="row g-4">
-                        <div class="mb-3">
+                    <div class="row g-4 my-2">
+                        <div class="col-md-2">
                             <label for="nombre" class="form-label">Nombre de la finca</label>
                             <input type="text" class="form-control" name="nombre" id="nombre" disabled value="{{ $finca?->nombre }}">
                         </div>
-                        <div class="mb-3">
+                        <div class="col-md-2">
                             <label for="nombre" class="form-label">Propietario</label>
                             <input type="text" class="form-control" name="nombre" id="nombre" disabled value="{{ $finca?->propietario }}">
                         </div>
-                        <div class="mb-3">
+                        <div class="col-md-2">
                             <label for="nombre" class="form-label">Donde compra</label>
                             <input type="text" class="form-control" name="nombre" id="nombre" disabled value="{{ $finca?->compra }}">
                         </div>
-                        <div class="mb-3">
+                        <div class="col-md-2">
                             <label for="nombre" class="form-label">Telefono</label>
                             <input type="text" class="form-control" name="nombre" id="nombre" disabled value="{{ $finca?->telefono }}">
                         </div>
                     </div>
 
-                    <table class="table table-success table-striped">
+                    <table class="table table-success table-striped table-bordered">
                         <thead>
                             <th>Mes</th>
                             <th> Higiene </th>
@@ -58,9 +63,28 @@
                             <th> Total </th>
                         </thead>
                         <tbody>
+                            @foreach ($reporte as $item)
                             <tr>
-                                <td>.....</td>
+                                <td>{{ $item->mes->nombre }}</td>
+                                <td> {{ $item->higiene }} </td>
+                                <td> {{ $item->dyv }} </td>
+                                <td> {{ $item->vacunaA }} </td>
+                                <td> {{ $item->vacunaR }} </td>
+                                <td> {{ $item->vacunaC }} </td>
+                                <td> {{ $item->vacunaL }} </td>
+                                <td> {{ $item->anaplasma }} </td>
+                                <td> {{ $item->controlGyM }} </td>
+                                <td> {{ $item->controlM }} </td>
+                                <td> {{ $item->controlCyO }} </td>
+                                <td> {{ $item->vacasP }} </td>
+                                <td> {{ $item->vacasE }} </td>
+                                <td> {{ $item->terneros }} </td>
+                                <td> {{ $item->animalesE }} </td>
+                                <td> {{ $item->vendidos }} </td>
+                                <td> {{ $item->muertos }} </td>
+                                <td> {{ ($item->vacasP + $item->vacasE + $item->terneros + $item->animalesE ) -($item->vendidos + $item->muertos) }} </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

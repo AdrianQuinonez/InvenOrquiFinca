@@ -15,4 +15,11 @@ use Illuminate\Database\Eloquent\Model;
 class Mes extends Model
 {
     use HasFactory;
+
+    protected $table = "meses";
+
+    public function reportes()
+    {
+        return $this->hasMany(Reporte::class, 'mes_id');
+    }
 }
