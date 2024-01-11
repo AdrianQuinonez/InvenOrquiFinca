@@ -18,4 +18,9 @@ use Illuminate\Database\Eloquent\Model;
 class Finca extends Model
 {
     use HasFactory;
+
+    public function reportes()
+    {
+        return $this->hasMany(Reporte::class, 'finca_id');
+    }
 }

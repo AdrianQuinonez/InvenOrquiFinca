@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Finca;
 use App\Models\Mes;
 use App\Models\Reporte;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class ReporteController extends Controller
@@ -52,31 +52,8 @@ class ReporteController extends Controller
             return redirect()->route('reportes.create')->with('info', 'Ya hay un reporte para este mes y en la finca seleccionada');
         } else {
             $reporte = new Reporte();
-            $reporte->finca_id = $request->nombreF;
-            $reporte->mes_id = $request->mes;
-            $reporte->year = $request->year == null ? date('Y') : $request->year;
-            $reporte->higiene = $request->higiene == 1 ? 'x' : '';
-            $reporte->dyv = $request->dyv == 1 ? 'x' : '';
-            $reporte->vacunaA = $request->vacunaA == 1 ? 'x' : '';
-            $reporte->vacunaR = $request->vacunaR == 1 ? 'x' : '';
-            $reporte->vacunaC = $request->vacunaC == 1 ? 'x' : '';
-            $reporte->vacunaL = $request->vacunaL == 1 ? 'x' : '';
-            $reporte->anaplasma = $request->anaplasma == 1 ? 'x' : '';
-            $reporte->controlGyM = $request->controlGyM == 1 ? 'x' : '';
-            $reporte->controlM = $request->controlM == 1 ? 'x' : '';
-            $reporte->controlCyO = $request->controlCyO == 1 ? 'x' : '';
-            $reporte->vacasP = $request->vacasP;
-            $reporte->vacasE = $request->vacasE;
-            $reporte->terneros = $request->terneros;
-            $reporte->animalesE = $request->animalesE;
-            $reporte->vendidos = $request->vendidos;
-            $reporte->muertos = $request->muertos;
-            $reporte->prevencion = $request->prevencion;
-            $reporte->tratamiento = $request->tratamiento;
-            $reporte->via = $request->via;
-            if ($reporte->save()) {
-                return redirect()->route('fincas.show')->with('success', 'Reporte creado con éxito');
-            }
+            $reporte->guardarReporte($request->all());
+            return redirect()->route('fincas.show')->with('success', 'Reporte creado con éxito');
         }
     }
 
@@ -93,7 +70,9 @@ class ReporteController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $reporte = Reporte::findOrFail($id);
+        return view('reportes.edit', compact('reporte'));
+
     }
 
     /**
@@ -101,14 +80,11 @@ class ReporteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $reporte = Reporte::findOrFail($id);
+        $request['nombreF'] = $reporte->finca_id;
+        $request['mes'] = $reporte->mes_id;
+        $request['year'] = $reporte->year;
+        $reporte->guardarReporte($request->all());
+        return redirect()->route('fincas.show')->with('success', 'Reporte actualizado con éxito');
     }
 }
