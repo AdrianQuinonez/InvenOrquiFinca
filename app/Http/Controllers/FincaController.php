@@ -31,11 +31,7 @@ class FincaController extends Controller
     public function store(Request $request)
     {
         $finca = new Finca();
-        $finca->nombre = $request->nombre;
-        $finca->propietario = $request->propietario;
-        $finca->compra = $request->donde_compra;
-        $finca->telefono = $request->telefono;
-        $finca->save();
+        $finca->guardarFinca($request->all());
         return redirect()->route('fincas.index')->with('info', 'Finca creada con éxito');
     }
 
@@ -80,11 +76,7 @@ class FincaController extends Controller
     public function update(Request $request, string $id)
     {
         $finca = Finca::findOrFail($id);
-        $finca->nombre = $request->nombre;
-        $finca->propietario = $request->propietario;
-        $finca->compra = $request->compra;
-        $finca->telefono = $request->telefono;
-        $finca->save();
+        $finca->guardarFinca($request->all());
         return redirect()->route('fincas.index')->with('info', 'Finca actualizada con éxito');
     }
 
