@@ -46,21 +46,22 @@
                             <th>Mes</th>
                             <th> Higiene </th>
                             <th> DyV </th>
-                            <th> VacunaA </th>
-                            <th> VacunaR </th>
-                            <th> VacunaC </th>
-                            <th> VacunaL</th>
+                            <th> VA </th>
+                            <th> VR </th>
+                            <th> VC </th>
+                            <th> VL</th>
                             <th> Anaplasma </th>
-                            <th> ControlGyM </th>
-                            <th> ControlM </th>
-                            <th> ControlCyO </th>
-                            <th> VacasP </th>
-                            <th> VacasE </th>
+                            <th> CGyM </th>
+                            <th> CM </th>
+                            <th> CCyO </th>
+                            <th> VP </th>
+                            <th> VE </th>
                             <th> Terneros </th>
                             <th> AnimalesE </th>
                             <th> Vendidos </th>
                             <th> Muertos </th>
                             <th> Total </th>
+                            <th> Acción </th>
                         </thead>
                         <tbody>
                             @foreach ($reporte as $item)
@@ -83,15 +84,18 @@
                                 <td> {{ $item->vendidos }} </td>
                                 <td> {{ $item->muertos }} </td>
                                 <td> {{ ($item->vacasP + $item->vacasE + $item->terneros + $item->animalesE ) -($item->vendidos + $item->muertos) }} </td>
+                                <td>
+                                    <a href="{{ route('reportes.edit', $item->id) }}" class="btn btn-warning btn-sm">Editar</a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
                 <div class="card-footer">
-                    <strong>DyV:</strong> Desparacitacion y vitaminas, <strong>VacunaA:</strong> Vacuna Aftosa, <strong>VacunaR:</strong> Vacuna Reproductiva,<strong>VacunaL:</strong> Vacuna Lestopira,
-                    <strong>ControlGyM:</strong> Control de garrapatas y moscas, <br><strong>ControlM:</strong> Control de moscas, <strong>ControlCyO:</strong> Control de coccidiosis y otros,
-                    <strong>VacasP</strong> : Vacas preñadas, <strong>VacasE:</strong> Vacas en espera, <strong>AnimalesE:</strong> Animales en espera, <br><strong>VacunasC:</strong> Vacuna del carbon,
+                    <strong>DyV:</strong> Desparacitacion y vitaminas, <strong>VA:</strong> Vacuna Aftosa, <strong>VR:</strong> Vacuna Reproductiva,<strong>VL:</strong> Vacuna Lestopira,
+                    <strong>CGyM:</strong> Control de garrapatas y moscas, <br><strong>CM:</strong> Control de moscas, <strong>CCyO:</strong> Control de coccidiosis y otros,
+                    <strong>VP</strong> : Vacas preñadas, <strong>VE:</strong> Vacas en espera, <strong>AnimalesE:</strong> Animales en espera, <br><strong>VacunasC:</strong> Vacuna del carbon,
                     <a href="javascript: document.getElementById('logout').submit()" class="btn btn-danger btn-sm float-end"> Cerrar sesión</a>
                     <form action="{{ route('logout') }}" id="logout" style="display: none;" method="post">
                         @csrf

@@ -26,6 +26,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $animalesE
  * @property int $vendidos
  * @property int $muertos
+ * @property string $prevencion
+ * @property string $tratamiento
+ * @property string $via
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  */
@@ -41,5 +44,32 @@ class Reporte extends Model
     public function mes()
     {
         return $this->belongsTo(Mes::class, 'mes_id');
+    }
+
+    public function guardarReporte($reporte)
+    {
+        $this->finca_id = $reporte['nombreF'];
+        $this->mes_id = $reporte['mes'];
+        $this->year = $reporte['year'] == null ? date('Y') : $reporte['year'];
+        $this->higiene = $reporte['higiene'] == 1 ? 'x' : '';
+        $this->dyv = $reporte['dyv'] == 1 ? 'x' : '';
+        $this->vacunaA = $reporte['vacunaA'] == 1 ? 'x' : '';
+        $this->vacunaR = $reporte['vacunaR'] == 1 ? 'x' : '';
+        $this->vacunaC = $reporte['vacunaC'] == 1 ? 'x' : '';
+        $this->vacunaL = $reporte['vacunaL'] == 1 ? 'x' : '';
+        $this->anaplasma = $reporte['anaplasma'] == 1 ? 'x' : '';
+        $this->controlGyM = $reporte['controlGyM'] == 1 ? 'x' : '';
+        $this->controlM = $reporte['controlM'] == 1 ? 'x' : '';
+        $this->controlCyO = $reporte['controlCyO'] == 1 ? 'x' : '';
+        $this->vacasP = $reporte['vacasP'];
+        $this->vacasE = $reporte['vacasE'];
+        $this->terneros = $reporte['terneros'];
+        $this->animalesE = $reporte['animalesE'];
+        $this->vendidos = $reporte['vendidos'];
+        $this->muertos = $reporte['muertos'];
+        $this->prevencion = $reporte['prevencion'];
+        $this->tratamiento = $reporte['tratamiento'];
+        $this->via = $reporte['via'];
+        return $this->save();
     }
 }

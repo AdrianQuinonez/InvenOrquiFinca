@@ -21,7 +21,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Donde compra</label>
-                            <input type="text" class="form-control" name="compra" id="compra" value="{{ $finca->compra }}">
+                            <input type="text" class="form-control" name="donde_compra" id="donde_compra" value="{{ $finca->compra }}">
                         </div>
                         <div class="form-group">
                             <label for="">Telefono</label>

@@ -18,4 +18,17 @@ use Illuminate\Database\Eloquent\Model;
 class Finca extends Model
 {
     use HasFactory;
+
+    public function reportes()
+    {
+        return $this->hasMany(Reporte::class, 'finca_id');
+    }
+
+    public function guardarFinca($finca){
+        $this->nombre = $finca['nombre'];
+        $this->propietario = $finca['propietario'];
+        $this->compra = $finca['donde_compra'];
+        $this->telefono = $finca['telefono'];
+        $this->save();
+    }
 }
